@@ -1,0 +1,33 @@
+{
+	"FileVersion": 3,
+	"Version": 1,
+	"VersionName": "1.0",
+	"SemVersion": "1.0.0",
+	"FriendlyName": "ConveyorFlipper",
+	"Description": "Flip disconnected conveyors by right clicking with the dismantle tool",
+	"Category": "Other",
+	"CreatedBy": "jp_riz#2312",
+	"CreatedByURL": "",
+	"DocsURL": "",
+	"MarketplaceURL": "",
+	"SupportURL": "",
+	"CanContainContent": true,
+	"IsBetaVersion": true,
+	"IsExperimentalVersion": false,
+	"Installed": false,
+	"Modules": [
+		{
+			"Name": "ConveyorFlipper",
+			"Type": "Runtime",
+			"LoadingPhase": "Default"
+		}
+	],
+	"Plugins": [
+		{
+			"Name": "SML",
+			"SemVersion": "^3.0.0",
+			"Enabled": true,
+			"bIsOptional": true
+		}
+	]
+}
