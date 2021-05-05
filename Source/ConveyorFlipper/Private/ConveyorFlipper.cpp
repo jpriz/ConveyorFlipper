@@ -71,7 +71,34 @@ void FConveyorFlipperModule::StartupModule()
 							}
 						}
 
-						
+						if (Actor->GetClass()->IsChildOf(AFGBuildableConveyorLift::StaticClass()))
+						{
+							UE_LOG(LogConveyorFlipperLog, Warning, TEXT("actor %s"),(Actor == nullptr || Actor == NULL)? TEXT("null"): TEXT("not null"));
+							
+							AFGBuildableConveyorLift* Lift = Cast<AFGBuildableConveyorLift>(Actor);
+							
+							UE_LOG(LogConveyorFlipperLog, Warning, TEXT("AFGMyConveyorLift %s"),Lift == nullptr? TEXT("null"): TEXT("not null"));
+
+							UFGFactoryConnectionComponent* Connection0 = Lift->GetConnection0();
+							UFGFactoryConnectionComponent* Connection1 = Lift->GetConnection1();
+
+							if (!Connection0->IsConnected() && !Connection1->IsConnected())
+							{
+
+								EFactoryConnectionDirection direction0 = Connection0->GetDirection();
+								EFactoryConnectionDirection direction1 = Connection1->GetDirection();
+		
+								Connection0->SetDirection(direction1);
+								Connection1->SetDirection(direction0);
+								UE_LOG(LogConveyorFlipperLog, Warning, TEXT("got directions"));
+								UFGFactoryConnectionComponent* mConnection = Connection0;
+								Lift->mConnection0 = Connection1;
+								Lift->mConnection1 = Connection0;
+								UE_LOG(LogConveyorFlipperLog, Warning, TEXT("flipped connections"));
+
+								
+							}
+						}
 					}
 				}
 			}
